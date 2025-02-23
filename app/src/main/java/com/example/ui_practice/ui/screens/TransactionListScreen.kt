@@ -4,8 +4,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
+
 @Composable
-fun TransactionListScreen(modifier: Modifier = Modifier) {
+fun TransactionListScreenRoot(){
+    TransactionListScreen()
+}
+
+@Composable
+private fun TransactionListScreen(modifier: Modifier = Modifier) {
     Text("List Screen")
 
 }

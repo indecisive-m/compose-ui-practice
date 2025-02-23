@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ui-practice</string>
+    <string name="home_headline">Bank Smarter. Quickly. Globally</string>
+    <string name="home_tagline">Enjoy confident and effortless banking, wherever you are, whenever you need it, always.</string>
+    <string name="home_screen_button">Revolutionize Your Banking</string>
+    <string name="home_headline_1">Bank Smarter.</string>
+    <string name="home_headline_2">Quickly. Globally.</string>
 </resources>
