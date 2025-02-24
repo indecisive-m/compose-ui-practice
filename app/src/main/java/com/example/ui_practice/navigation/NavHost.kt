@@ -6,9 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
-import com.example.ui_practice.ui.screens.Start.StartScreenRoot
 import com.example.ui_practice.ui.screens.TransactionDetailsScreenRoot
-import com.example.ui_practice.ui.screens.TransactionListScreenRoot
+import com.example.ui_practice.ui.screens.start.StartScreenRoot
+import com.example.ui_practice.ui.screens.transaction_list.TransactionListScreenRoot
 
 
 ////// Add Kotlinx Serialization And change from routes to serializable routes like in the video

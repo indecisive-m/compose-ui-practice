@@ -5,4 +5,8 @@
     <string name="home_screen_button">Revolutionize Your Banking</string>
     <string name="home_headline_1">Bank Smarter.</string>
     <string name="home_headline_2">Quickly. Globally.</string>
+    <string name="avatar">Avatar photograph</string>
+    <string name="search">Search</string>
+    <string name="top_up">Top Up</string>
+    <string name="send_money">Send Money</string>
 </resources>
