@@ -1,7 +1,6 @@
 package com.example.ui_practice.ui.screens.transaction_list.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -49,13 +48,13 @@ fun AvatarBar(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .clip(RoundedCornerShape(100.dp))
-                    .size(24.dp)
+                    .size(28.dp)
 
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = "Mike Watkins",
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodyLarge,
                 color = Color.White
             )
             Spacer(modifier = Modifier.width(4.dp))
@@ -71,7 +70,7 @@ fun AvatarBar(
             imageVector = Icons.Default.Search,
             contentDescription = stringResource(R.string.search),
             tint = Color.White,
-            modifier = Modifier.size(16.dp)
+            modifier = Modifier.size(24.dp)
 
         )
     }
