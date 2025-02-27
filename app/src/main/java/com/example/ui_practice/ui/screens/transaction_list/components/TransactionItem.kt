@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,6 +25,7 @@ import com.example.ui_practice.R
 import com.example.ui_practice.Status
 import com.example.ui_practice.Transaction
 import com.example.ui_practice.TransactionType
+import com.example.ui_practice.ui.theme.Green400
 import com.example.ui_practice.ui.theme.Grey100
 import com.example.ui_practice.ui.theme.UipracticeTheme
 
@@ -77,8 +79,8 @@ fun TransactionItem(
         }
         Text(
             text = amount,
-
-            style = MaterialTheme.typography.bodyLarge
+            style = MaterialTheme.typography.bodyLarge,
+            color = if (amount.startsWith("+")) Green400 else Color.Black
         )
     }
 

@@ -1,7 +1,9 @@
 package com.example.ui_practice.ui.screens.transaction_list
 
+import android.text.Layout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -26,8 +28,9 @@ import com.example.ui_practice.R
 import com.example.ui_practice.ui.screens.transaction_list.components.AccountBalance
 import com.example.ui_practice.ui.screens.transaction_list.components.AvatarBar
 import com.example.ui_practice.ui.screens.transaction_list.components.Filter_list
+import com.example.ui_practice.ui.screens.transaction_list.components.NavBar
 import com.example.ui_practice.ui.screens.transaction_list.components.TransactionList
-import com.example.ui_practice.ui.screens.transaction_list.components.transactionList
+import com.example.ui_practice.ui.screens.transaction_list.components.transactionsList
 import com.example.ui_practice.ui.theme.Grey500
 import com.example.ui_practice.ui.theme.UipracticeTheme
 
@@ -39,58 +42,63 @@ fun TransactionListScreenRoot() {
 
 @Composable
 private fun TransactionListScreen(modifier: Modifier = Modifier) {
-
+    Box(modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
     Column(
         modifier = modifier
-            .background(Grey500)
-            .fillMaxSize()
-            .statusBarsPadding()
-
-    ) {
-        AvatarBar()
-        Spacer(modifier = Modifier.height(8.dp))
-        AccountBalance()
-        Column(
-            modifier = Modifier
+                .background(Grey500)
                 .fillMaxSize()
-                .background(Color.Black)
-                .clip(
-                    RoundedCornerShape(
-                        topStart = 16.dp,
-                        topEnd = 16.dp
-                    )
-                )
-                .background(Color.White)
-                .padding(
-                    horizontal = 16.dp,
-                    vertical = 24.dp
-                )
+                .statusBarsPadding()
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-
+            AvatarBar()
+            Spacer(modifier = Modifier.height(8.dp))
+            AccountBalance()
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Black)
+                    .clip(
+                        RoundedCornerShape(
+                            topStart = 16.dp,
+                            topEnd = 16.dp
+                        )
+                    )
+                    .background(Color.White)
+                    .padding(
+                        horizontal = 16.dp,
+                        vertical = 24.dp
+                    )
             ) {
-                Text(
-                    text = stringResource(R.string.transactions),
-                    style = MaterialTheme.typography.titleLarge,
-                )
-                Icon(
-                    imageVector = Filter_list,
-                    contentDescription = stringResource(R.string.filter_transactions)
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+
+                ) {
+                    Text(
+                        text = stringResource(R.string.transactions),
+                        style = MaterialTheme.typography.titleLarge,
+                    )
+                    Icon(
+                        imageVector = Filter_list,
+                        contentDescription = stringResource(R.string.filter_transactions)
+                    )
+
+
+                }
+
+                TransactionList(
+                    transactionsList
                 )
 
 
+                }
             }
 
-            TransactionList(
-                transactionList
-            )
-
-        }
 
 
+        NavBar(modifier = Modifier.align(Alignment.BottomCenter))
     }
 
 }

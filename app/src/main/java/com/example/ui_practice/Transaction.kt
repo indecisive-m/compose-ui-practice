@@ -20,4 +20,8 @@ data class Transaction(
     val cardNumber: String
 )
 
+data class TransactionDay(
+    val date: String,
+    val transactions: List<Transaction>
+)
 
