@@ -6,8 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
-import com.example.ui_practice.ui.screens.TransactionDetailsScreenRoot
 import com.example.ui_practice.ui.screens.start.StartScreenRoot
+import com.example.ui_practice.ui.screens.transaction_details.TransactionDetailsScreenRoot
 import com.example.ui_practice.ui.screens.transaction_list.TransactionListScreenRoot
 
 
@@ -17,6 +17,7 @@ import com.example.ui_practice.ui.screens.transaction_list.TransactionListScreen
 @Composable
 fun NavHost(
     modifier: Modifier = Modifier
+
 ) {
 
     val navController = rememberNavController()
@@ -24,7 +25,7 @@ fun NavHost(
 
     NavHost(
         navController = navController,
-        startDestination = Route.TransactionGraph
+        startDestination = Route.TransactionGraph,
     ) {
         navigation<Route.TransactionGraph>(
             startDestination = Route.Start

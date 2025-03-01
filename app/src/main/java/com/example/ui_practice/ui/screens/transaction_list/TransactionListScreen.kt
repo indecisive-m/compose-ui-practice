@@ -1,6 +1,5 @@
 package com.example.ui_practice.ui.screens.transaction_list
 
-import android.text.Layout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -41,15 +40,21 @@ fun TransactionListScreenRoot() {
 }
 
 @Composable
-private fun TransactionListScreen(modifier: Modifier = Modifier) {
-    Box(modifier = Modifier.fillMaxSize(),
+private fun TransactionListScreen(
+    modifier: Modifier = Modifier
+        .fillMaxSize()
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Grey500)
+            .statusBarsPadding(),
         contentAlignment = Alignment.Center
     ) {
-    Column(
-        modifier = modifier
-                .background(Grey500)
+        Column(
+            modifier = modifier
                 .fillMaxSize()
-                .statusBarsPadding()
+
         ) {
             AvatarBar()
             Spacer(modifier = Modifier.height(8.dp))
@@ -93,12 +98,16 @@ private fun TransactionListScreen(modifier: Modifier = Modifier) {
                 )
 
 
-                }
             }
+        }
 
 
 
-        NavBar(modifier = Modifier.align(Alignment.BottomCenter))
+        NavBar(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(32.dp)
+        )
     }
 
 }

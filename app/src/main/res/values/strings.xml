@@ -14,4 +14,13 @@
     <string name="home">Home</string>
     <string name="settings">Settings</string>
     <string name="menu">Menu</string>
+    <string name="details">Details</string>
+    <string name="details_card">Card</string>
+    <string name="details_transaction_type">Transaction type</string>
+    <string name="details_card_payment">Card Payment</string>
+    <string name="details_cash_payment">Cash Payment</string>
+    <string name="details_transaction_number">Transaction number</string>
+    <string name="details_status">Status</string>
+    <string name="details_status_success">Successful</string>
+    <string name="details_status_failed">Failed</string>
 </resources>

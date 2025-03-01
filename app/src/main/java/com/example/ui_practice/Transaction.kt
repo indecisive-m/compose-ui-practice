@@ -17,7 +17,7 @@ data class Transaction(
     val transactionNumber: String,
     val status: Status,
     val transactionType: TransactionType,
-    val cardNumber: String
+    val cardNumber: String? = null
 )
 
 data class TransactionDay(
