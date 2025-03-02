@@ -36,7 +36,9 @@ fun TransactionDay(
             style = MaterialTheme.typography.labelSmall
         )
         transactionItemList.map { transaction ->
-            TransactionItem(transaction)
+            TransactionItem(
+                transaction
+            )
         }
     }
 

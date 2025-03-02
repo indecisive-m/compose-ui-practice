@@ -23,4 +23,9 @@
     <string name="details_status">Status</string>
     <string name="details_status_success">Successful</string>
     <string name="details_status_failed">Failed</string>
+    <string name="split_the_bill">Split the Bill</string>
+    <string name="repeat">Repeat</string>
+    <string name="save">Save</string>
+    <string name="close">Close</string>
+    <string name="map">Map of location where transaction occurred</string>
 </resources>

@@ -23,7 +23,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.ui_practice.R
+import com.example.ui_practice.Transaction
+import com.example.ui_practice.ui.Action
+import com.example.ui_practice.ui.TransactionState
+import com.example.ui_practice.ui.TransactionViewModel
 import com.example.ui_practice.ui.screens.transaction_list.components.AccountBalance
 import com.example.ui_practice.ui.screens.transaction_list.components.AvatarBar
 import com.example.ui_practice.ui.screens.transaction_list.components.Filter_list
@@ -35,12 +40,29 @@ import com.example.ui_practice.ui.theme.UipracticeTheme
 
 
 @Composable
-fun TransactionListScreenRoot() {
-    TransactionListScreen()
+fun TransactionListScreenRoot(
+    viewModel: TransactionViewModel,
+    onTransactionItemClick: (Transaction) -> Unit,
+) {
+
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
+    TransactionListScreen(
+        state = state,
+        onAction = { action ->
+            when (action) {
+                is Action.OnTransactionClick -> onTransactionItemClick(action.transaction)
+                else -> Unit
+            }
+        }
+    )
 }
 
 @Composable
 private fun TransactionListScreen(
+    state: TransactionState,
+    onAction: (Action) -> Unit,
+
     modifier: Modifier = Modifier
         .fillMaxSize()
 ) {
@@ -94,7 +116,7 @@ private fun TransactionListScreen(
                 }
 
                 TransactionList(
-                    transactionsList
+                    transactionsList,
                 )
 
 
@@ -117,6 +139,9 @@ private fun TransactionListScreen(
 @Composable
 fun TransactionListScreenPreview() {
     UipracticeTheme {
-        TransactionListScreen()
+        TransactionListScreen(
+            onAction = {},
+            state = TODO(),
+        )
     }
 }

@@ -1,23 +1,18 @@
 package com.example.ui_practice.ui.screens.transaction_details.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -25,14 +20,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.ui_practice.R
 import com.example.ui_practice.Status
-import com.example.ui_practice.Transaction
 import com.example.ui_practice.TransactionType
-import com.example.ui_practice.ui.screens.transaction_list.components.Transaction
 import com.example.ui_practice.ui.theme.UipracticeTheme
 
 @Composable
 fun Details(
-    transaction: Transaction,
+    cardNumber: String?,
+    transactionType: TransactionType,
+    transactionNumber: String,
+    status: Status,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -41,16 +37,18 @@ fun Details(
     ) {
         Text(
             text = stringResource(R.string.details),
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleMedium
         )
         Spacer(modifier = Modifier.height(16.dp))
 
 
-        if (transaction.cardNumber != null) {
+        if (cardNumber != null) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth().height(32.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(32.dp)
 
             ) {
                 Text(
@@ -71,7 +69,7 @@ fun Details(
                         text = "•• "
                     )
                     Text(
-                        text = transaction.cardNumber.substringAfterLast("-"),
+                        text = cardNumber.substringAfterLast("-"),
                         style = MaterialTheme.typography.titleSmall
                     )
 
@@ -85,7 +83,9 @@ fun Details(
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth().height(32.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(32.dp)
 
         ) {
             Text(
@@ -95,7 +95,7 @@ fun Details(
 
             )
             Text(
-                text = if (transaction.transactionType == TransactionType.CARD) stringResource(R.string.details_card_payment) else stringResource(R.string.details_cash_payment),
+                text = if (transactionType == TransactionType.CARD) stringResource(R.string.details_card_payment) else stringResource(R.string.details_cash_payment),
                 style = MaterialTheme.typography.titleSmall
             )
         }
@@ -104,7 +104,9 @@ fun Details(
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth().height(32.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(32.dp)
 
         ) {
             Text(
@@ -114,7 +116,7 @@ fun Details(
 
             )
             Text(
-                text = transaction.transactionNumber,
+                text = transactionNumber,
                 style = MaterialTheme.typography.titleSmall
 
             )
@@ -124,7 +126,9 @@ fun Details(
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth().height(32.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(32.dp)
 
         ) {
             Text(
@@ -133,7 +137,7 @@ fun Details(
 
             )
             Text(
-                text = if (transaction.status == Status.SUCCESS) stringResource(R.string.details_status_success) else stringResource(R.string.details_status_failed),
+                text = if (status == Status.SUCCESS) stringResource(R.string.details_status_success) else stringResource(R.string.details_status_failed),
                 style = MaterialTheme.typography.titleSmall
 
             )
@@ -146,7 +150,12 @@ fun Details(
 @Composable
 fun DetailsPreview() {
     UipracticeTheme {
-        Details(transaction = Transaction)
+        Details(
+            cardNumber = "4876-XXXX-XXXX-9012",
+            transactionType = TransactionType.CARD,
+            transactionNumber = "TXN-20240205-002",
+            status = Status.SUCCESS
+        )
     }
 }
 

@@ -19,7 +19,10 @@ fun TransactionList(
     LazyColumn(
 
     ) {
-        items(transactionsList) { transaction ->
+        items(
+            items = transactionsList,
+
+            ) { transaction ->
 
             TransactionDay(
                 transactionDay = transaction,
@@ -39,7 +42,7 @@ fun TransactionList(
 fun TransactionListPreview() {
     UipracticeTheme {
         TransactionList(
-            transactionsList
+            transactionsList = transactionsList
 
         )
     }

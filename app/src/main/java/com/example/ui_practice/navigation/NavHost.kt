@@ -6,12 +6,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import com.example.ui_practice.ui.TransactionViewModel
 import com.example.ui_practice.ui.screens.start.StartScreenRoot
 import com.example.ui_practice.ui.screens.transaction_details.TransactionDetailsScreenRoot
 import com.example.ui_practice.ui.screens.transaction_list.TransactionListScreenRoot
-
-
-////// Add Kotlinx Serialization And change from routes to serializable routes like in the video
 
 
 @Composable
@@ -27,6 +25,9 @@ fun NavHost(
         navController = navController,
         startDestination = Route.TransactionGraph,
     ) {
+
+        val viewModel = TransactionViewModel()
+
         navigation<Route.TransactionGraph>(
             startDestination = Route.Start
         ) {
@@ -38,7 +39,13 @@ fun NavHost(
                 )
             }
             composable<Route.TransactionsList>() {
-                TransactionListScreenRoot()
+                TransactionListScreenRoot(
+                    viewModel = viewModel,
+                    onTransactionItemClick = { transaction ->
+
+                        navController.navigate(Route.TransactionDetails(transaction.transactionNumber))
+                    }
+                )
             }
             composable<Route.TransactionDetails>() {
                 TransactionDetailsScreenRoot()

@@ -1,6 +1,7 @@
 package com.example.ui_practice.ui.screens.transaction_list.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -46,10 +47,15 @@ fun TransactionItem(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .clickable(
+                enabled = true,
+                onClick = {}
+            ),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
+        horizontalArrangement = Arrangement.SpaceBetween,
+
+        ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -92,13 +98,12 @@ fun TransactionItem(
 fun TransactionItemPreview() {
     UipracticeTheme {
         TransactionItem(
-            Transaction
-
+            transactionItem = transaction,
         )
     }
 }
 
-val Transaction = Transaction(
+val transaction = Transaction(
     amount = "-38.75",
     brand = "Costa Coffee",
     description = "Coffee Purchase",
