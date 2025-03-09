@@ -16,6 +16,7 @@ import kotlinx.datetime.LocalDate
 fun TransactionDay(
     transactionDay: TransactionDay,
     transactionItemList: List<Transaction>,
+    onTransactionClick: (Transaction) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -35,9 +36,12 @@ fun TransactionDay(
             text = formattedDate,
             style = MaterialTheme.typography.labelSmall
         )
-        transactionItemList.map { transaction ->
+        transactionItemList.forEach { transaction ->
             TransactionItem(
-                transaction
+                transactionItem = transaction,
+                onClick = {
+                    onTransactionClick(transaction)
+                }
             )
         }
     }

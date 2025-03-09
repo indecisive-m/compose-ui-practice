@@ -1,27 +1,28 @@
 package com.example.ui_practice.ui
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 
 class TransactionViewModel : ViewModel() {
 
     private val _state = MutableStateFlow(TransactionState())
 
-    val state = _state.onStart { }
-        .stateIn(
-            viewModelScope,
-            SharingStarted.WhileSubscribed(5000L),
-            _state.value
-        )
+    val state: StateFlow<TransactionState> = _state
 
     fun onAction(action: Action) {
         when (action) {
             is Action.OnTransactionClick -> {
 
+            }
+
+            is Action.OnSelectedTransactionChange -> {
+                _state.update { currentState ->
+                    currentState.copy(
+                        selectedTransaction = action.transaction
+                    )
+                }
             }
         }
     }

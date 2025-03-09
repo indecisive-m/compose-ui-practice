@@ -33,6 +33,7 @@ import com.example.ui_practice.ui.theme.UipracticeTheme
 @Composable
 fun TransactionItem(
     transactionItem: Transaction,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -50,7 +51,7 @@ fun TransactionItem(
             .padding(8.dp)
             .clickable(
                 enabled = true,
-                onClick = {}
+                onClick = onClick
             ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -99,6 +100,7 @@ fun TransactionItemPreview() {
     UipracticeTheme {
         TransactionItem(
             transactionItem = transaction,
+            onClick = {}
         )
     }
 }

@@ -5,15 +5,15 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.ui_practice.Status
 import com.example.ui_practice.Transaction
 import com.example.ui_practice.TransactionDay
-import com.example.ui_practice.TransactionType
 import com.example.ui_practice.ui.theme.UipracticeTheme
+import com.example.ui_practice.ui.transactionsListTest
 
 @Composable
 fun TransactionList(
     transactionsList: List<TransactionDay>,
+    onTransactionClick: (Transaction) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
@@ -22,11 +22,12 @@ fun TransactionList(
         items(
             items = transactionsList,
 
-            ) { transaction ->
+            ) { transactionDay ->
 
             TransactionDay(
-                transactionDay = transaction,
-                transactionItemList = transaction.transactions
+                transactionDay = transactionDay,
+                transactionItemList = transactionDay.transactions,
+                onTransactionClick = onTransactionClick
 
             )
 
@@ -42,38 +43,11 @@ fun TransactionList(
 fun TransactionListPreview() {
     UipracticeTheme {
         TransactionList(
-            transactionsList = transactionsList
+            transactionsList = transactionsListTest,
+            onTransactionClick = {}
 
         )
     }
 }
 
 
-val transactionsList = (1..10).map {
-    TransactionDay(
-        date = "2024-07-26",
-        transactions = listOf(
-            Transaction(
-                amount = "+38.75",
-                brand = "Costa Coffee",
-                description = "Coffee Purchase",
-                location = "Manchester, England",
-                transactionNumber = "TXN-20240201-002",
-                status = Status.SUCCESS,
-                transactionType = TransactionType.CARD,
-                cardNumber = "4876-XXXX-XXXX-9012"
-            ),
-            Transaction(
-                amount = "-38.75",
-                brand = "Costa Coffee",
-                description = "Coffee Purchase",
-                location = "Manchester, England",
-                transactionNumber = "TXN-20240201-002",
-                status = Status.SUCCESS,
-                transactionType = TransactionType.CARD,
-                cardNumber = "4876-XXXX-XXXX-9012"
-            ),
-
-            )
-    )
-}

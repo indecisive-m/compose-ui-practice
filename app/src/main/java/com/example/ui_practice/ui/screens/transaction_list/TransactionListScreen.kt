@@ -34,7 +34,6 @@ import com.example.ui_practice.ui.screens.transaction_list.components.AvatarBar
 import com.example.ui_practice.ui.screens.transaction_list.components.Filter_list
 import com.example.ui_practice.ui.screens.transaction_list.components.NavBar
 import com.example.ui_practice.ui.screens.transaction_list.components.TransactionList
-import com.example.ui_practice.ui.screens.transaction_list.components.transactionsList
 import com.example.ui_practice.ui.theme.Grey500
 import com.example.ui_practice.ui.theme.UipracticeTheme
 
@@ -45,7 +44,7 @@ fun TransactionListScreenRoot(
     onTransactionItemClick: (Transaction) -> Unit,
 ) {
 
-    val state by viewModel.state.collectAsStateWithLifecycle()
+    val state = viewModel.state.collectAsStateWithLifecycle().value
 
     TransactionListScreen(
         state = state,
@@ -54,7 +53,9 @@ fun TransactionListScreenRoot(
                 is Action.OnTransactionClick -> onTransactionItemClick(action.transaction)
                 else -> Unit
             }
+            viewModel.onAction(action)
         }
+
     )
 }
 
@@ -62,12 +63,11 @@ fun TransactionListScreenRoot(
 private fun TransactionListScreen(
     state: TransactionState,
     onAction: (Action) -> Unit,
-
     modifier: Modifier = Modifier
         .fillMaxSize()
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Grey500)
             .statusBarsPadding(),
@@ -116,7 +116,8 @@ private fun TransactionListScreen(
                 }
 
                 TransactionList(
-                    transactionsList,
+                    state.transactionsList,
+                    onTransactionClick = { onAction(Action.OnTransactionClick(it)) }
                 )
 
 
