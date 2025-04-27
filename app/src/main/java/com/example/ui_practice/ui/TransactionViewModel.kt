@@ -15,15 +15,18 @@ class TransactionViewModel : ViewModel() {
         when (action) {
             is Action.OnTransactionClick -> {
 
+
             }
 
             is Action.OnSelectedTransactionChange -> {
                 _state.update { currentState ->
                     currentState.copy(
-                        selectedTransaction = action.transaction
+                        selectedTransaction = action.transaction,
+                        openBottomSheet = true
                     )
                 }
             }
+
         }
     }
 }

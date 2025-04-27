@@ -2,11 +2,11 @@ package com.example.ui_practice
 
 
 enum class TransactionType {
-    CARD, CASH
+    CARD, CASH, BANK_TRANSFER
 }
 
 enum class Status {
-    SUCCESS, FAIL
+    SUCCESSFUL, FAIL
 }
 
 data class Transaction(
@@ -17,7 +17,8 @@ data class Transaction(
     val transactionNumber: String,
     val status: Status,
     val transactionType: TransactionType,
-    val cardNumber: String? = null
+    val cardNumber: String? = null,
+    val date: String
 )
 
 data class TransactionDay(

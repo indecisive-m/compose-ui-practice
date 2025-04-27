@@ -37,13 +37,6 @@ fun TransactionItem(
     modifier: Modifier = Modifier
 ) {
 
-    val amount = StringBuilder(transactionItem.amount).insertRange(
-        1,
-        "£",
-        0,
-        1
-    )
-        .toString()
 
     Row(
         modifier = modifier
@@ -85,9 +78,9 @@ fun TransactionItem(
             }
         }
         Text(
-            text = amount,
+            text = transactionItem.amount,
             style = MaterialTheme.typography.bodyLarge,
-            color = if (amount.startsWith("+")) Green400 else Color.Black
+            color = if (transactionItem.amount.startsWith("+")) Green400 else Color.Black
         )
     }
 
@@ -111,7 +104,8 @@ val transaction = Transaction(
     description = "Coffee Purchase",
     location = "Manchester, England",
     transactionNumber = "TXN-20240201-002",
-    status = Status.SUCCESS,
+    status = Status.SUCCESSFUL,
     transactionType = TransactionType.CARD,
-    cardNumber = "4876-XXXX-XXXX-9012"
+    cardNumber = "4876-XXXX-XXXX-9012",
+    date = "2024-02-01"
 )

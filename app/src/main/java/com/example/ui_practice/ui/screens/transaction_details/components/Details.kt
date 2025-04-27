@@ -137,7 +137,7 @@ fun Details(
 
             )
             Text(
-                text = if (status == Status.SUCCESS) stringResource(R.string.details_status_success) else stringResource(R.string.details_status_failed),
+                text = if (status == Status.SUCCESSFUL) stringResource(R.string.details_status_success) else stringResource(R.string.details_status_failed),
                 style = MaterialTheme.typography.titleSmall
 
             )
@@ -154,7 +154,7 @@ fun DetailsPreview() {
             cardNumber = "4876-XXXX-XXXX-9012",
             transactionType = TransactionType.CARD,
             transactionNumber = "TXN-20240205-002",
-            status = Status.SUCCESS
+            status = Status.SUCCESSFUL
         )
     }
 }

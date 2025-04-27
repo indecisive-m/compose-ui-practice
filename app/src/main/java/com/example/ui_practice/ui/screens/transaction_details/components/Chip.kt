@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.ui_practice.ui.theme.White800
+import com.example.ui_practice.ui.theme.Grey100
 
 @Composable
 fun Chip(
@@ -24,7 +24,7 @@ fun Chip(
         modifier = Modifier
             .border(
                 1.dp,
-                White800,
+                Grey100.copy(alpha = 0.3f),
                 RoundedCornerShape(12.dp)
             )
             .padding(

@@ -48,11 +48,11 @@ fun Title(
         Spacer(modifier = Modifier.width(16.dp))
         Column(
             modifier = Modifier.weight(1f)
-            
+
         ) {
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.headlineMedium
             )
             Text(
                 text = description,

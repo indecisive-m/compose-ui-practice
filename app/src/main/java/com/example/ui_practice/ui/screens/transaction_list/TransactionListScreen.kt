@@ -116,8 +116,8 @@ private fun TransactionListScreen(
                 }
 
                 TransactionList(
-                    state.transactionsList,
-                    onTransactionClick = { onAction(Action.OnTransactionClick(it)) }
+                    transactionsList = state.transactionsList,
+                    onTransactionClick = { onAction(Action.OnTransactionClick(it)) },
                 )
 
 
